@@ -28,7 +28,7 @@ An alternative is to call Lambdas from within the code using AWS SDKs. However, 
 ### Deployment
 
 ```bash
-$ git clone lambda-proxy
+$ git clone git@github.com:lobster1234/lambda-proxy.git
 $ cd lambda-proxy
 $ mvn clean install jetty:run
 ```
@@ -80,7 +80,7 @@ If on-prem or on a laptop, attach the above policy to the IAM user whose credent
 * Missing function name
 
 ```bash
- curl -i  http://localhost:8080/lambda-proxy/function                                          
+$ curl -i  http://localhost:8080/lambda-proxy/function                                          
 HTTP/1.1 400
 Content-Type: text/html;charset=utf-8
 Transfer-Encoding: chunked
@@ -93,7 +93,7 @@ Server: Apache Tomcat/8.5.11
 
 * Function Not Found
 ```bash
-curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
+$ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
 HTTP/1.1 404
 Content-Type: text/html;charset=utf-8
 Transfer-Encoding: chunked
