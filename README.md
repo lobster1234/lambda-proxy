@@ -74,6 +74,11 @@ If this proxy will run in an autoscaling group in AWS (recommended), create a ro
 
 If on-prem or on a laptop, attach the above policy to the IAM user whose credentials will sit in `~/.aws/credentials`.
 
+
+### Typical Deployment in AWS
+
+![AWS Deployment](lambda_proxy.png)
+
 ### Errors
 
 
