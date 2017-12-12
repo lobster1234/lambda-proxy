@@ -1,4 +1,4 @@
-# HTTP Proxy Server for AWS Lambda Invocations
+# HTTP/S Proxy Server for AWS Lambda Invocations
 
 ### Purpose
 
