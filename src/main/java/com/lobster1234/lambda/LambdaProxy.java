@@ -29,6 +29,11 @@ public class LambdaProxy implements SparkApplication {
 
         get("/healthcheck", (req, res) -> "OK");
 
+        get("/functions", (req,res) ->{
+            res.header("Content-Type","application/json");
+            return   gson.toJson(lambdaClient.listFunctions().getFunctions().stream().collect(Collectors.toList()));
+        });
+
         get("/function", (req, res) -> {
             APIGatewayProxyResponseEvent response = invokeLambda(req);
             res.status(response.getStatusCode());

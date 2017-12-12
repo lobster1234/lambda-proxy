@@ -7,7 +7,7 @@ Besides, API Gateway endpoints for Lambda are public, no matter how we slice and
 
 This is a lightweight HTTP/S proxy written in Java, which wraps a lambda invocation in an APIGatewayLambdaProxyRequest, thereby mimicking the API Gateway-Lambda Proxy Integration.
 
-The only endpoint is `/function`, which supports `GET`, `PUT`, `POST`, and `DELETE`. Any request sent to this endpoint is wrapped as [APIGatewayProxyRequestEvent](https://github.com/aws/aws-lambda-java-libs/blob/master/aws-lambda-java-events/src/main/java/com/amazonaws/services/lambda/runtime/events/APIGatewayProxyRequestEvent.java).
+The `/function` endpoint supports `GET`, `PUT`, `POST`, and `DELETE`. Any request sent to this endpoint is wrapped as [APIGatewayProxyRequestEvent](https://github.com/aws/aws-lambda-java-libs/blob/master/aws-lambda-java-events/src/main/java/com/amazonaws/services/lambda/runtime/events/APIGatewayProxyRequestEvent.java).
 
 The Response from the Lambda is wrapped as [APIGatewayProxyResponseEvent](https://github.com/aws/aws-lambda-java-libs/blob/master/aws-lambda-java-events/src/main/java/com/amazonaws/services/lambda/runtime/events/APIGatewayProxyResponseEvent.java).
 
@@ -22,7 +22,10 @@ An alternative is to call Lambdas from within the code using AWS SDKs. However, 
 
 * `GET /healthcheck` - Used by the load balancer
 
+* `GET /functions` - Get a list of lambda functions
+
 * `GET | PUT | POST | DELETE  /function` - Invoke the Lambda Function named in the header `x-lambda-function-name`. This header can also contain the ARN of the function.
+
 
 
 ### Deployment
@@ -64,7 +67,8 @@ If this proxy will run in an autoscaling group in AWS (recommended), create a ro
             "Sid": "InvokePermission",
             "Effect": "Allow",
             "Action": [
-                "lambda:InvokeFunction"
+                "lambda:InvokeFunction",
+                "lambda:ListFunctions"
             ],
             "Resource": "*"
         }
