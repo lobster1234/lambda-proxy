@@ -5,7 +5,7 @@
 [Lambda Functions](https://aws.amazon.com/lambda/) are a FaaS implementation on Amazon Web Services. Setting them as HTTP/S endpoints over API Gateway can be complicated, and more often than not is an overkill for simple, internal APIs. 
 Besides, API Gateway endpoints for Lambda are public, no matter how we slice and dice it. The recently announced VPC Link for API Gateway only allows the endpoints to route to a NLB target, not a Lambda. 
 
-This is a lightweight HTTP/S proxy written in Java, which wraps a lambda invocation in an APIGatewayLambdaProxyRequest, thereby mimicking the API Gateway-Lambda Proxy Integration.
+This is a lightweight HTTP/S proxy written in Java, which wraps a lambda invocation, mimicking the API Gateway-Lambda Proxy Integration.
 
 The `/function` endpoint supports `GET`, `PUT`, `POST`, and `DELETE`. Any request sent to this endpoint is wrapped as [APIGatewayProxyRequestEvent](https://github.com/aws/aws-lambda-java-libs/blob/master/aws-lambda-java-events/src/main/java/com/amazonaws/services/lambda/runtime/events/APIGatewayProxyRequestEvent.java).
 
