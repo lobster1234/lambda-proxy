@@ -165,7 +165,7 @@ Server: Apache Tomcat/8.5.11
 * Function Not Found
 
 ```bash
-$ curl -i -X POST http://localhost:8080/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
+$ curl -i -X POST http://localhost:8080/function -H 'x-lambda-function-name:internal-api-func'
 HTTP/1.1 404
 Content-Type: application/json
 Transfer-Encoding: chunked
