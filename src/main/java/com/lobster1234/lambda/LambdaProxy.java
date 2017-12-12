@@ -35,24 +35,28 @@ public class LambdaProxy implements SparkApplication {
         });
 
         get("/function", (req, res) -> {
+            res.header("Content-Type","application/json");
             APIGatewayProxyResponseEvent response = invokeLambda(req);
             res.status(response.getStatusCode());
-            return response;
+            return gson.toJson(response);
         });
         put("/function", (req, res) -> {
+            res.header("Content-Type","application/json");
             APIGatewayProxyResponseEvent response = invokeLambda(req);
             res.status(response.getStatusCode());
-            return response;
+            return gson.toJson(response);
         });
         delete("/function", (req, res) -> {
+            res.header("Content-Type","application/json");
             APIGatewayProxyResponseEvent response = invokeLambda(req);
             res.status(response.getStatusCode());
-            return response;
+            return gson.toJson(response);
         });
         post("/function", (req, res) -> {
+            res.header("Content-Type","application/json");
             APIGatewayProxyResponseEvent response = invokeLambda(req);
             res.status(response.getStatusCode());
-            return response;
+            return gson.toJson(response);
         });
 
     }
@@ -75,7 +79,7 @@ public class LambdaProxy implements SparkApplication {
         APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent();
         if (req.headers("x-lambda-function-name") == null) {
             response.setStatusCode(400);
-            response.setBody("{'Error':'Must provide x-lambda-function-name header'}");
+            response.setBody("{\"Error\":\"Must provide x-lambda-function-name header\"}}");
             return response;
         }
 
