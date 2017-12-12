@@ -38,7 +38,7 @@ $ mvn clean install jetty:run
 
 This will run the lambda proxy server on jetty, port 8080. 
 
-To deploy in Tomcat, copy `target/lambda-proxy-1.0-SNAPSHOT.war` and copy it to `$TOMCAT_HOME/webapps` as lambda-proxy.war.
+To deploy in Tomcat, copy `target/lambda-proxy-1.0-SNAPSHOT.war` and copy it to `$TOMCAT_HOME/webapps` as `lambda-proxy.war` for the context `lambda-proxy` or as `ROOT.war` for `/`.
 
 
 ### IAM Policy
@@ -113,7 +113,7 @@ Server: Apache Tomcat/8.5.11
 * Invoke a lambda function
 
 ```bash
-$ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:internal-api-function'
+$ curl -i -X POST http://localhost:8080/function -H 'x-lambda-function-name:internal-api-function'
   HTTP/1.1 200
   Content-Type: application/json
   Transfer-Encoding: chunked
@@ -147,7 +147,7 @@ $ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-funct
 * Missing function name
 
 ```bash
-$ curl -i  http://localhost:8080/lambda-proxy/function                                          
+$ curl -i  http://localhost:8080/function                                          
 HTTP/1.1 400
 Content-Type: application/json
 Transfer-Encoding: chunked
@@ -165,7 +165,7 @@ Server: Apache Tomcat/8.5.11
 * Function Not Found
 
 ```bash
-$ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
+$ curl -i -X POST http://localhost:8080/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
 HTTP/1.1 404
 Content-Type: application/json
 Transfer-Encoding: chunked
@@ -183,7 +183,7 @@ Server: Apache Tomcat/8.5.11
 * Runtime Failure
 
 ```bash
-$ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:getBankTransactions-dev-get-accounts'
+$ curl -i -X POST http://localhost:8080/function -H 'x-lambda-function-name:getBankTransactions-dev-get-accounts'
 HTTP/1.1 500
 Content-Type: application/json
 Transfer-Encoding: chunked
