@@ -158,9 +158,12 @@ Server: Apache Tomcat/8.5.11
 {
    "statusCode":400,
    "body":"{\"Error\":\"Must provide x-lambda-function-name header\"}}"
-}```
+}
+
+```
 
 * Function Not Found
+
 ```bash
 $ curl -i -X POST http://localhost:8080/lambda-proxy/function -H 'x-lambda-function-name:getBankTransactions-dev-get-transactions'
 HTTP/1.1 404
@@ -205,4 +208,6 @@ Server: Apache Tomcat/8.5.11
    \"java.lang.ExceptionInInitializerError\",\"stackTrace\":[\"com.serverless.foo.AccountsHandler.handleRequest
    (AccountsHandler.java:34)\"],\"cause\":{\"errorMessage\":\"com.serverless.foo.ApplicationException: 
    Bad Request\",\"errorType\":\"java.lang.RuntimeException\",\"stackTrace\":\"]}}}"
-}```
+}
+
+```
